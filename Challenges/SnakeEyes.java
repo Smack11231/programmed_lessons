@@ -12,12 +12,13 @@ public class SnakeEyes {
         int max = 6;
         int diceone = dice.nextInt(max) + 1;
         int dicetwo = dice.nextInt(max) + 1;
-        double avgsum = 0, avgrolls = 0, roll4 = 0;
+        int avgsum = 0, avgrolls = 0;
+        double roll4 = 0;
 
         int i = 0;
         while (i<times) {
             int rolls = 0;
-            while (diceone!=1 || dicetwo!=1) {
+            while (diceone != 1 || dicetwo != 1) {
                 avgsum += diceone + dicetwo;
                 avgrolls += 1;
                 diceone = dice.nextInt(max);
