@@ -17,7 +17,7 @@ public class SnakeEyes {
         int i = 0;
         while (i<times) {
             int rolls = 0;
-            while (diceone!=1 && dicetwo!=1) {
+            while (diceone!=1 || dicetwo!=1) {
                 avgsum += diceone + dicetwo;
                 avgrolls += 1;
                 diceone = dice.nextInt(max);
