@@ -1,38 +1,53 @@
 public class Employee {
-    String name = "", position = "";
-    double wage = 0, paycheck = 0;
-    int id = 0;
-    int currentHoursWorked = 0, totalHoursWorked = 0;
-    int x = 0;
+    private String name = "", position = "";
+    private double wage = 0, paycheck = 0;
+    private static int id = 0;
+    private int currentHoursWorked = 0, totalHoursWorked = 0;
 
     public Employee(String name, String position, int wage) {
         this.name = name;
         this.position = position;
         this.wage = wage;
+        this.id = id;
+        id++;
     }
     public void work(int hours) {
-        this.currentHoursWorked = hours;
+        this.currentHoursWorked += hours;
         this.totalHoursWorked += hours;
     }
-    public int createId() {
-        int id = x;
-        this.x += 1;
-    }
+
 
     public double request(){
-        this.paycheck = currentHoursWorked*wage - 0.15*currentHoursWorked*wage;
+        double paycheck = new Paycheck(this);
         return paycheck;
+        this.currentHoursWorked = 0;
     }
+
     public int getCurrentHours() {
         return currentHoursWorked;
     }
+
+    public int getTotalHours() {
+        return totalHoursWorked;
+    }
+
     public double getWage() {
         return wage;
     }
+
     public double getPaycheck() {
         return paycheck;
     }
+
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String toString(){
+      return contents + "   " +  date + "   " +  capacity + " fl. oz."  ;
     }
 }
