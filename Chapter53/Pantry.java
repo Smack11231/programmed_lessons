@@ -43,6 +43,16 @@ public class Pantry {
     selected . spread( oz ) ;
   }
 
+  public void replace( Jam jam, int slot) {
+    if (slot==1) {
+      this.jar1 = jam;
+    } else if (slot==2){
+      this.jar2 = jam;
+    } else if (slot==3){
+      this.jar3 = jam;
+    }
+  }
+
   public boolean select(int jarNumber){
     if (jarNumber == 1){
         if (jar1 != null){
