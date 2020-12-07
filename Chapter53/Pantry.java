@@ -53,6 +53,15 @@ public class Pantry {
     }
   }
 
+  public void mixedFruit() {
+    if (jar1.getFluid() <= 2 && jar2.getFluid() <=2 && jar3.getFluid() <= 2) {
+      jar2 = null;
+      jar3 = null;
+      jar1.setName("Mixed Fruit");
+      jar1.setCapacity(5);
+    }
+  }
+
   public boolean select(int jarNumber){
     if (jarNumber == 1){
         if (jar1 != null){

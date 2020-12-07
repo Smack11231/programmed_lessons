@@ -20,6 +20,18 @@ public class Jam {
     public String toString() {
       return contents + "   " +  date + "   " +  capacity + " fl. oz."  ;
     }
+
+    public int getFluid() {
+        return capacity;
+    }
+
+    public void setName(String name) {
+        contents = name;
+    }
+
+    public void setCapacity(int cap) {
+        capacity = cap;
+    }
   
     public void spread ( int fluidOz ) {
       if ( !empty() ) {
