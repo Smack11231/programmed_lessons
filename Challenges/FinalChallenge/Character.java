@@ -66,8 +66,40 @@ public class Character {
         }
     }
 
+    public Character(String name, String type, int stren, int tough,int intel, int mag, int inf) {
+        this.name = name;
+        this.type = type;
+        strength = stren;
+        intelligence = intel;
+        this.toughness = tough;
+        magic = mag;
+        influence = inf;
+        if (type.equals("knight")) {
+            knightCount ++;
+        } else if (type.equals("peasant")) {
+            peasantCount ++;
+        } else if (type.equals("cleric")) {
+            clericCount ++;
+        } else if (type.equals("mage")) {
+            mageCount ++;
+        } else if (type.equals("courtier")) {
+            peasantCount ++;
+        }
+    }
+
+    public Character(String[] parameters) {
+        this(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
+
+    }
     public void setName(String name){
         this.name = name;
+    }
+    public void setCount() {
+        knightCount = 0;
+        peasantCount = 0;
+        clericCount = 0;
+        mageCount = 0;
+        courtierCount = 0;
     }
 
     public void setType(String tope) {
@@ -94,6 +126,14 @@ public class Character {
         } else if (type.equals("courtier")) {
             peasantCount ++;
         }
+    }
+
+    public boolean tooManyPoints() {
+        int sum = strength + toughness + intelligence + magic + influence;
+        if (sum > 28 || sum < 8) {
+            return true;
+        }
+        return false;
     }
 
     public boolean isTooMuch() {
@@ -142,7 +182,7 @@ public class Character {
         if (name == null) {
             return type + "," + strength + "," + toughness + "," + intelligence + "," + magic + "," + influence;
         } else {
-            return name + "," + type + "," + strength + "," + toughness + "," + intelligence + "," + magic + "," + influence + "\n" + knightCount + " " + courtierCount;
+            return name + "," + type + "," + strength + "," + toughness + "," + intelligence + "," + magic + "," + influence;
         }
     }
 }
