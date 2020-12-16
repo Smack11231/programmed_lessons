@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
  
@@ -17,6 +16,8 @@ public class MedievalTester {
         while (selection != 4) {
 
             if (selection == 1) {
+                Character characterset = new Character("null");
+                characterset.setCount();
                 System.out.println("Enter file name");
                 String fileName = scan2.nextLine();
                 fileName = scan2.nextLine();
@@ -106,7 +107,7 @@ public class MedievalTester {
                     String[] parameters = scan.nextLine().split(",");
                     char1 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
                     if (char1.isTooMuch()) {
-                        System.out.println("This file has more than one instance of a character type.");
+                        System.out.println("This file has more than two instances of a character type.");
                     }
                     if (char1.tooManyPoints()) {
                         System.out.println("Character 1 has too many or too little status points.");
@@ -116,7 +117,7 @@ public class MedievalTester {
                     String[] parameters = scan.nextLine().split(",");
                     char2 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
                     if (char2.isTooMuch()) {
-                        System.out.println("This file has more than one instance of a character type.");
+                        System.out.println("This file has more than two instances of a character type.");
                     }
                     if (char2.tooManyPoints()) {
                         System.out.println("Character 2 has too many or too little status points.");
@@ -126,7 +127,7 @@ public class MedievalTester {
                     String[] parameters = scan.nextLine().split(",");
                     char3 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
                     if (char3.isTooMuch()) {
-                        System.out.println("This file has more than one instance of a character type.");
+                        System.out.println("This file has more than two instances of a character type.");
                     }
                     if (char3.tooManyPoints()) {
                         System.out.println("Character 3 has too many or too little status points.");
@@ -136,7 +137,7 @@ public class MedievalTester {
                     String[] parameters = scan.nextLine().split(",");
                     char4 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
                     if (char4.isTooMuch()) {
-                        System.out.println("This file has more than one instance of a character type.");
+                        System.out.println("This file has more than two instances of a character type.");
                     }
                     if (char4.tooManyPoints()) {
                         System.out.println("Character 4 has too many or too little status points.");
@@ -148,18 +149,54 @@ public class MedievalTester {
             }
 
             if (selection == 3){
-                System.out.println("Enter file name");
+                System.out.println("Enter file name:");
                 String fileName = scan2.nextLine();
                 fileName = scan2.nextLine();
                 file = new File(fileName);
                 scan = new Scanner(file);
 
-                scan.nextLine();
+                gameName = scan.nextLine();
                 String[] parameters = scan.nextLine().split(",");
                 Character char1 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
                 System.out.println(char1);
-                System.out.println("Which character would you like to reroll?");
                 
+                parameters = scan.nextLine().split(",");
+                Character char2 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
+                System.out.println(char2);
+                
+                parameters = scan.nextLine().split(",");
+                Character char3 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
+                System.out.println(char3);
+                
+                parameters = scan.nextLine().split(",");
+                Character char4 = new Character(parameters[0], parameters[1], Integer.parseInt(parameters[2]), Integer.parseInt(parameters[3]), Integer.parseInt(parameters[4]), Integer.parseInt(parameters[5]), Integer.parseInt(parameters[6]));
+                System.out.println(char4);
+                
+                System.out.println("Which character would you like to reroll?");
+                String changeChar = scan2.nextLine();
+                if (changeChar.equals(char1.getName())) {
+                    char1.rerollAgain(char1);
+                    System.out.println("Character randomized successfully: ");
+                    System.out.println(char1);
+                } else if (changeChar.equals(char2.getName())) {
+                    char2.rerollAgain(char2);
+                    System.out.println("Character randomized successfully: ");
+                    System.out.println(char2);
+                } else if (changeChar.equals(char3.getName())) {
+                    char3.rerollAgain(char3);
+                    System.out.println("Character randomized successfully: ");
+                    System.out.println(char3);
+                } else if (changeChar.equals(char4.getName())) {
+                    char4.rerollAgain(char4);
+                    System.out.println("Character randomized successfully: ");
+                    System.out.println(char4);
+                } else {
+                    System.out.println("No characters matched that name.");
+                }
+
+                FileWriter writer = new FileWriter(file);
+                writer.write(gameName + "\n" + char1 + "\n" + char2 + "\n" + char3 + "\n" + char4);
+                writer.close();
             }
 
             if (selection == 4){

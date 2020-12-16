@@ -128,19 +128,94 @@ public class Character {
         }
     }
 
-    public boolean tooManyPoints() {
-        int sum = strength + toughness + intelligence + magic + influence;
-        if (sum > 28 || sum < 8) {
-            return true;
+    public void rerollAgain(Character current) {
+        int typee = rand.nextInt(5);
+        if (typee == 0) {
+            type = "knight";
+        } else if (typee == 1) {
+            type = "peasant";
+        } else if (typee == 2) {
+            type = "cleric";
+        } else if (typee == 3) {
+            type = "mage";
+        } else if (typee == 4) {
+            type = "courtier";
         }
-        return false;
-    }
-
-    public boolean isTooMuch() {
-        if (knightCount > 2 || peasantCount > 2|| clericCount > 2|| mageCount > 2|| courtierCount > 2) {
-            return true;
-        } else {
-            return false;
+        if (type.equals("knight")) {
+            this.strength = rand.nextInt(4) + 7;
+            this.toughness = rand.nextInt(6);
+            this.intelligence = rand.nextInt(6);
+            this.magic = rand.nextInt(6);
+            this.influence = rand.nextInt(6);
+        } else if (type.equals("peasant")) {
+            this.strength = rand.nextInt(6);
+            this.toughness = rand.nextInt(4) + 7;
+            this.intelligence = rand.nextInt(6);
+            this.magic = rand.nextInt(6);
+            this.influence = rand.nextInt(6);
+        } else if (type.equals("cleric")) {
+            this.strength = rand.nextInt(6);
+            this.toughness = rand.nextInt(6);
+            this.intelligence = rand.nextInt(4) + 7;
+            this.magic = rand.nextInt(6);
+            this.influence = rand.nextInt(6);
+        } else if (type.equals("mage")) {
+            this.strength = rand.nextInt(6);
+            this.toughness = rand.nextInt(6);
+            this.intelligence = rand.nextInt(6);
+            this.magic = rand.nextInt(4) + 7;
+            this.influence = rand.nextInt(6);
+        } else if (type.equals("courtier")) {
+            this.strength = rand.nextInt(6);
+            this.toughness = rand.nextInt(6);
+            this.intelligence = rand.nextInt(6);
+            this.magic = rand.nextInt(6);
+            this.influence = rand.nextInt(4) + 7;
+        }
+        while(current.isTooMuch()) {
+            typee = rand.nextInt(5);
+            if (typee == 0) {
+                type = "knight";
+            } else if (typee == 1) {
+                type = "peasant";
+            } else if (typee == 2) {
+                type = "cleric";
+            } else if (typee == 3) {
+                type = "mage";
+            } else if (typee == 4) {
+                type = "courtier";
+            }
+            if (type.equals("knight")) {
+                this.strength = rand.nextInt(4) + 7;
+                this.toughness = rand.nextInt(6);
+                this.intelligence = rand.nextInt(6);
+                this.magic = rand.nextInt(6);
+                this.influence = rand.nextInt(6);
+            } else if (type.equals("peasant")) {
+                this.strength = rand.nextInt(6);
+                this.toughness = rand.nextInt(4) + 7;
+                this.intelligence = rand.nextInt(6);
+                this.magic = rand.nextInt(6);
+                this.influence = rand.nextInt(6);
+            } else if (type.equals("cleric")) {
+                this.strength = rand.nextInt(6);
+                this.toughness = rand.nextInt(6);
+                this.intelligence = rand.nextInt(4) + 7;
+                this.magic = rand.nextInt(6);
+                this.influence = rand.nextInt(6);
+            } else if (type.equals("mage")) {
+                this.strength = rand.nextInt(6);
+                this.toughness = rand.nextInt(6);
+                this.intelligence = rand.nextInt(6);
+                this.magic = rand.nextInt(4) + 7;
+                this.influence = rand.nextInt(6);
+            } else if (type.equals("courtier")) {
+                this.strength = rand.nextInt(6);
+                this.toughness = rand.nextInt(6);
+                this.intelligence = rand.nextInt(6);
+                this.magic = rand.nextInt(6);
+                this.influence = rand.nextInt(4) + 7;
+            }
         }
     }
 
@@ -176,6 +251,27 @@ public class Character {
             this.magic = rand.nextInt(6);
             this.influence = rand.nextInt(4) + 7;
         }
+    }
+
+
+    public boolean tooManyPoints() {
+        int sum = strength + toughness + intelligence + magic + influence;
+        if (sum > 28 || sum < 8) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isTooMuch() {
+        if (knightCount > 2 || peasantCount > 2|| clericCount > 2|| mageCount > 2|| courtierCount > 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String getName(){
+        return name;
     }
 
     public String toString() {
