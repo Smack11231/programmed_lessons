@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class ex5 {
+public class ex6 {
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter n:");
