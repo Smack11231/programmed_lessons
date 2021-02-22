@@ -19,6 +19,6 @@ public class ex1 {
             return 1;
         } else {
             return N + Triangle( N-1 );
-        }
+        } 
     }
 }
